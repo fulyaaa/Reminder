@@ -28,14 +28,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReminderCell" id="fch-ge-pTY">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReminderCell" id="fch-ge-pTY" customClass="ReminderCell" customModule="Reminder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="140" width="393" height="56"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xe1-An-CqW">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCA-tr-wld">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCA-tr-wld" userLabel="Task Title Label">
                                                     <rect key="frame" x="16" y="0.0" width="329" height="56"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -49,6 +49,9 @@
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="checkButtonTapped:" destination="fch-ge-pTY" eventType="touchUpInside" id="NtK-BO-XjT"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -61,6 +64,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="393" height="56"/>
+                                        <connections>
+                                            <outlet property="checkButton" destination="cDv-Df-zxa" id="RCf-QR-x4h"/>
+                                            <outlet property="taskTitleLabel" destination="QCA-tr-wld" id="Kf5-x8-G4h"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ReminderHeader" id="YLf-HB-loL">
@@ -136,6 +143,7 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
                                 </buttonConfiguration>
                                 <connections>
+                                    <action selector="addButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wnr-70-QKv"/>
                                     <segue destination="wSy-rt-rNH" kind="presentation" id="Nxk-WY-8qy"/>
                                 </connections>
                             </button>
@@ -153,6 +161,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="O8f-XS-ayc"/>
+                    <connections>
+                        <outlet property="collectionView" destination="laq-ek-q6b" id="nLK-TC-ULd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -213,6 +224,9 @@
                                 <rect key="frame" x="316" y="718.66666666666663" width="61" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="saveTapped:" destination="wSy-rt-rNH" eventType="touchUpInside" id="xlg-mQ-rqI"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="To0-RU-vmX" userLabel="Time Stack View">
                                 <rect key="frame" x="15.999999999999993" y="200.66666666666666" width="111.33333333333331" height="24"/>
@@ -257,6 +271,11 @@
                             <constraint firstItem="odq-jk-2pq" firstAttribute="top" secondItem="To0-RU-vmX" secondAttribute="bottom" constant="16" id="xoM-wN-hdy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dataLabel" destination="ZbE-tf-Aga" id="eV2-kU-buP"/>
+                        <outlet property="descriptionTextView" destination="odq-jk-2pq" id="tWC-Xb-IlO"/>
+                        <outlet property="timeLabel" destination="To0-RU-vmX" id="EbF-g9-aJf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIJ-td-z4P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
