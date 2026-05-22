@@ -223,7 +223,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="sUw-UG-h4f"/>
                                 </constraints>
-                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" systemColor="viewFlipsideBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -279,9 +279,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="dataLabel" destination="ZbE-tf-Aga" id="eV2-kU-buP"/>
+                        <outlet property="dateLabel" destination="8dE-ID-2mj" id="nB4-pZ-lRx"/>
                         <outlet property="descriptionTextView" destination="odq-jk-2pq" id="tWC-Xb-IlO"/>
-                        <outlet property="timeLabel" destination="To0-RU-vmX" id="EbF-g9-aJf"/>
+                        <outlet property="timeLabel" destination="HoD-op-oQQ" id="Sds-Vg-ea0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIJ-td-z4P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -314,6 +314,9 @@
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

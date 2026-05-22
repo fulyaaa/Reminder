@@ -12,8 +12,10 @@ protocol AddReminderDelegate: AnyObject {
 
 class AddReminderViewController: UIViewController {
     
-    @IBOutlet weak var dataLabel: UIStackView!
-    @IBOutlet weak var timeLabel: UIStackView!
+    //@IBOutlet weak var dataLabel: UIStackView!
+    @IBOutlet weak var dateLabel: UILabel!
+    //@IBOutlet weak var timeLabel: UIStackView!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
     
     weak var delegate: AddReminderDelegate?
@@ -22,6 +24,18 @@ class AddReminderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionTextView.text = ""
+        updateDateTimeLabels()
+    }
+    
+    func updateDateTimeLabels() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE, d MMM"
+        dateLabel.text = dateFormatter.string(from: Date())
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "hh: mm a"
+        timeLabel.text = timeFormatter.string(from: Date())
+ 
     }
     
     @IBAction func saveTapped(_ sender: UIButton) {
