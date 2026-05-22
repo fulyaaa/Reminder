@@ -18,10 +18,27 @@ class ReminderCell: UICollectionViewCell {
     weak var delegate: ReminderCellDelegate?
     var index: Int = 0
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.lightGray.cgColor
+        layer.cornerRadius = 8
+    }
+    
     func bind(title: String, isCompleted: Bool) {
-        taskTitleLabel.text = title
         let checkboxImage = isCompleted ? "checkmark.circle.fill" : "circle"
         checkButton.setImage(UIImage(systemName: checkboxImage), for: .normal)
+        
+        if isCompleted {
+            let attributedString = NSAttributedString(
+                string: title,
+                attributes: [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
+            )
+            taskTitleLabel.attributedText = attributedString
+        } else {
+            taskTitleLabel.attributedText = nil
+            taskTitleLabel.text = title
+        }
     }
     
     @IBAction func checkButtonTapped(_ sender: UIButton) {

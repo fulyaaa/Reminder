@@ -38,5 +38,34 @@ class ReminderListViewModel {
         completions = UserDefaults.standard.array(forKey: "completions") as? [Bool] ?? []
     }
     
+    func getDateStrings() -> (yesterday:String, today:String, tomorrow: String){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMM"
+        
+        let today = Date()
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)!
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
+        
+        return(
+            yesterday: formatter.string(from: yesterday),
+            today: formatter.string(from: today),
+            tomorrow: formatter.string(from: tomorrow)
+            
+        )
+    }
+    
+    func getGreeting() -> String {
+        let hour = Calendar.current.component(.hour, from: Date())
+        switch hour {
+        case 6..<12:
+            return "Good Morning Yusuf"
+        case 12..<18:
+            return "Good Afternoon Yusuf"
+        case 18..<22:
+            return "Good Evening Yusuf"
+        default:
+            return "Good Night Yusuf"
+        }
+    }
     
 }

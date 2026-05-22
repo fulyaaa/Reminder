@@ -10,6 +10,7 @@ import UIKit
 class ReminderListViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var addButton: UIButton!
     
     let viewModel = ReminderListViewModel()
 
@@ -24,6 +25,9 @@ class ReminderListViewController: UIViewController {
         layout.minimumLineSpacing = 8
         layout.headerReferenceSize = CGSize(width: collectionView.frame.width, height: 140)
         collectionView.collectionViewLayout = layout
+        
+        addButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 40), forImageIn: .normal)
+        
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -52,7 +56,12 @@ extension ReminderListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ReminderHeader", for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ReminderHeader", for: indexPath) as! ReminderHeader
+        
+        let dates = viewModel.getDateStrings()
+        let greeting = viewModel.getGreeting()
+        header.bind(yesterday: dates.yesterday, today: dates.today, tomorrow: dates.tomorrow, greeting: greeting)
+        
         return header
     }
 }

@@ -70,7 +70,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ReminderHeader" id="YLf-HB-loL">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ReminderHeader" id="YLf-HB-loL" customClass="ReminderHeader" customModule="Reminder" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -129,6 +129,12 @@
                                         <constraint firstAttribute="trailing" secondItem="Nu3-GW-bC2" secondAttribute="trailing" constant="16" id="tsQ-HP-grm"/>
                                         <constraint firstItem="akT-mK-pdS" firstAttribute="leading" secondItem="YLf-HB-loL" secondAttribute="leadingMargin" constant="16" id="zcQ-lV-30J"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="greetingLabel" destination="Nu3-GW-bC2" id="d14-gU-kef"/>
+                                        <outlet property="todayLabel" destination="Rbc-GV-ZxE" id="RY2-4T-2fT"/>
+                                        <outlet property="tomorrowLabel" destination="i4g-O8-hTd" id="JSh-qo-DP6"/>
+                                        <outlet property="yesterdayLabel" destination="5hc-KZ-mll" id="jyb-Zj-sEs"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acc-dB-UQg">
@@ -162,6 +168,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="O8f-XS-ayc"/>
                     <connections>
+                        <outlet property="addButton" destination="acc-dB-UQg" id="6mO-zE-6L2"/>
                         <outlet property="collectionView" destination="laq-ek-q6b" id="nLK-TC-ULd"/>
                     </connections>
                 </viewController>
