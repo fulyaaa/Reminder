@@ -16,6 +16,7 @@ class ReminderListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         viewModel.loadReminders()
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -27,7 +28,6 @@ class ReminderListViewController: UIViewController {
         collectionView.collectionViewLayout = layout
         
         addButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 40), forImageIn: .normal)
-        
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
@@ -37,8 +37,6 @@ class ReminderListViewController: UIViewController {
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: true)
     }
-    
-    
 }
 
 extension ReminderListViewController: UICollectionViewDataSource {
@@ -49,9 +47,11 @@ extension ReminderListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReminderCell", for: indexPath) as! ReminderCell
+        
         cell.bind(title: viewModel.titles[indexPath.item], isCompleted: viewModel.completions[indexPath.item])
         cell.delegate = self
         cell.index = indexPath.item
+        
         return cell
     }
     
@@ -81,7 +81,7 @@ extension ReminderListViewController: ReminderCellDelegate {
 }
 
 extension ReminderListViewController: UICollectionViewDelegate{
-    
+    //delete and edit tasks
 }
 
 

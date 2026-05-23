@@ -6,8 +6,7 @@
 //
 import Foundation
 
-struct ReminderItems: Codable {
-    //UserDefaults'a kaydetmek için gerekli, "bu veriyi kaydet/oku" : Codable
+struct ReminderItems {
     var title: String
     var date: Date
     var isCompleted: Bool

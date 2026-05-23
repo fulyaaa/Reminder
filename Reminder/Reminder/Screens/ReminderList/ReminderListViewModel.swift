@@ -26,13 +26,11 @@ class ReminderListViewModel {
         titles.count
     }
     
-    //load all changes
     func saveReminders() {
         UserDefaults.standard.set(titles, forKey: "titles")
         UserDefaults.standard.set(completions, forKey: "completions")
     }
     
-    //app acılınca okur
     func loadReminders() {
         titles = UserDefaults.standard.stringArray(forKey: "titles") ?? []
         completions = UserDefaults.standard.array(forKey: "completions") as? [Bool] ?? []
@@ -50,7 +48,6 @@ class ReminderListViewModel {
             yesterday: formatter.string(from: yesterday),
             today: formatter.string(from: today),
             tomorrow: formatter.string(from: tomorrow)
-            
         )
     }
     
@@ -58,13 +55,13 @@ class ReminderListViewModel {
         let hour = Calendar.current.component(.hour, from: Date())
         switch hour {
         case 6..<12:
-            return "Good Morning Yusuf"
+            return "Good Morning"
         case 12..<18:
-            return "Good Afternoon Yusuf"
+            return "Good Afternoon"
         case 18..<22:
-            return "Good Evening Yusuf"
+            return "Good Evening"
         default:
-            return "Good Night Yusuf"
+            return "Good Night"
         }
     }
     

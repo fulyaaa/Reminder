@@ -74,7 +74,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Morning Yusuf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nu3-GW-bC2">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Morning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nu3-GW-bC2">
                                             <rect key="frame" x="24" y="52.666666666666664" width="353" height="28.666666666666664"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                             <nil key="textColor"/>
@@ -232,7 +232,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                 <connections>
-                                    <action selector="saveTapped:" destination="wSy-rt-rNH" eventType="touchUpInside" id="xlg-mQ-rqI"/>
+                                    <action selector="saveTapped:" destination="wSy-rt-rNH" eventType="touchUpInside" id="Lwc-Nh-yWy"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="To0-RU-vmX" userLabel="Time Stack View">
@@ -280,7 +280,7 @@
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="8dE-ID-2mj" id="nB4-pZ-lRx"/>
-                        <outlet property="descriptionTextView" destination="odq-jk-2pq" id="tWC-Xb-IlO"/>
+                        <outlet property="descriptionTextView" destination="odq-jk-2pq" id="6bd-m8-hL5"/>
                         <outlet property="timeLabel" destination="HoD-op-oQQ" id="Sds-Vg-ea0"/>
                     </connections>
                 </viewController>
