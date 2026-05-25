@@ -17,32 +17,31 @@ class AddReminderViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     
     weak var delegate: AddReminderDelegate?
+    let viewModel = AddReminderViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        descriptionTextView.text = ""
+        updateDateTimeLabels()
+        
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
         descriptionTextView.layer.cornerRadius = 8
         descriptionTextView.text = ""
-        updateDateTimeLabels()
+        //updateDateTimeLabels()
     }
     
     //add viewdidappear func for keybord 
     
     func updateDateTimeLabels() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEE, d MMM"
-        dateLabel.text = dateFormatter.string(from: Date())
-        
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "hh: mm a"
-        timeLabel.text = timeFormatter.string(from: Date())
+        dateLabel.text = viewModel.getCurrentDate()
+        timeLabel.text = viewModel.getCurrentTime()
     }
     
     @IBAction func saveTapped(_ sender: UIButton) {
-        print("save tapped")
-        guard let title = descriptionTextView.text, !title.isEmpty else { return }
-        delegate?.didAddReminder(title: title)
+        viewModel.title = descriptionTextView.text ?? ""
+        guard viewModel.isFormValid() else { return }
+        delegate?.didAddReminder(title: viewModel.title)
         dismiss(animated: true)
     }
     //move all func reminderViewModel
