@@ -28,10 +28,19 @@ class AddReminderViewController: UIViewController {
         descriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
         descriptionTextView.layer.cornerRadius = 8
         descriptionTextView.text = ""
-        //updateDateTimeLabels()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
-    //add viewdidappear func for keybord 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        descriptionTextView.becomeFirstResponder()
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
     func updateDateTimeLabels() {
         dateLabel.text = viewModel.getCurrentDate()
@@ -44,5 +53,4 @@ class AddReminderViewController: UIViewController {
         delegate?.didAddReminder(title: viewModel.title)
         dismiss(animated: true)
     }
-    //move all func reminderViewModel
 }
