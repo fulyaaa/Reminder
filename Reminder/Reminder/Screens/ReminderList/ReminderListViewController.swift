@@ -81,7 +81,6 @@ extension ReminderListViewController: ReminderCellDelegate {
 }
 
 extension ReminderListViewController: UICollectionViewDelegate{
-    //delete and edit tasks
 }
 
 

@@ -25,6 +25,10 @@ class ReminderCell: UICollectionViewCell {
         layer.cornerRadius = 8
     }
     
+    @IBAction func checkButtonTapped(_ sender: UIButton) {
+        delegate?.didTapCheckButton(at: index)
+    }
+    
     func bind(title: String, isCompleted: Bool) {
         let checkboxImage = isCompleted ? "checkmark.circle.fill" : "circle"
         checkButton.setImage(UIImage(systemName: checkboxImage), for: .normal)
@@ -39,9 +43,5 @@ class ReminderCell: UICollectionViewCell {
             taskTitleLabel.attributedText = nil
             taskTitleLabel.text = title
         }
-    }
-    
-    @IBAction func checkButtonTapped(_ sender: UIButton) {
-        delegate?.didTapCheckButton(at: index)
     }
 }
