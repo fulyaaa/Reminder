@@ -33,6 +33,12 @@ class AddReminderViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         descriptionTextView.becomeFirstResponder()
@@ -51,6 +57,6 @@ class AddReminderViewController: UIViewController {
         viewModel.title = descriptionTextView.text ?? ""
         guard viewModel.isFormValid() else { return }
         delegate?.didAddReminder(title: viewModel.title)
-        dismiss(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
 }

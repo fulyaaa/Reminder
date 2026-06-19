@@ -6,34 +6,46 @@
 //
 import Foundation
 
+struct ReminderModel{
+    var isCompleted: Bool
+    let title: String
+}
+
 class ReminderListViewModel {
     
-    var titles: [String] = []
-    var completions: [Bool] = []
+    var reminders: [ReminderModel] = []
     
     func addReminder(title: String) {
-        titles.append(title)
-        completions.append(false)
+        
+        let reminder: ReminderModel = .init(isCompleted: false, title: title)
+        reminders.append(reminder)
+        
         saveReminders()
     }
     
     func toggleCompletion(at index: Int) {
-        completions[index].toggle()
+        reminders[index].isCompleted.toggle()
         saveReminders()
     }
     
     func numberOfReminders() -> Int {
-        titles.count
+        reminders.count
     }
     
     func saveReminders() {
+        let titles = reminders.map { $0.title }
+        let completions = reminders.map{ $0.isCompleted }
         UserDefaults.standard.set(titles, forKey: "titles")
         UserDefaults.standard.set(completions, forKey: "completions")
     }
     
     func loadReminders() {
-        titles = UserDefaults.standard.stringArray(forKey: "titles") ?? []
-        completions = UserDefaults.standard.array(forKey: "completions") as? [Bool] ?? []
+        let titles = UserDefaults.standard.stringArray(forKey: "titles") ?? []
+        let completions = UserDefaults.standard.array(forKey: "completions") as? [Bool] ?? []
+                
+        reminders = titles.enumerated().map { index, title in
+            ReminderModel(isCompleted: completions[index], title: title)
+        }
     }
     
     func getDateStrings() -> (yesterday:String, today:String, tomorrow: String){

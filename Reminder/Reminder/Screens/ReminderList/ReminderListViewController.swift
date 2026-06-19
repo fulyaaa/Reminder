@@ -12,7 +12,7 @@ class ReminderListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addButton: UIButton!
     
-    let viewModel = ReminderListViewModel()
+    private let viewModel = ReminderListViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,16 +30,21 @@ class ReminderListViewController: UIViewController {
         addButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 40), forImageIn: .normal)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     @IBAction func addButtonTapped(_ sender: UIButton) {
         let stoaryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = stoaryboard.instantiateViewController(withIdentifier: "AddReminderViewController") as! AddReminderViewController
         viewController.delegate = self
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: true)
+        navigationController?.show(viewController, sender: nil)
     }
 }
 
-extension ReminderListViewController: UICollectionViewDataSource {
+extension ReminderListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfReminders()
@@ -47,8 +52,9 @@ extension ReminderListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReminderCell", for: indexPath) as! ReminderCell
-        
-        cell.bind(title: viewModel.titles[indexPath.item], isCompleted: viewModel.completions[indexPath.item])
+        let reminder = viewModel.reminders[indexPath.item]
+
+        cell.bind(title: reminder.title, isCompleted: reminder.isCompleted)
         cell.delegate = self
         cell.index = indexPath.item
         
@@ -80,8 +86,8 @@ extension ReminderListViewController: ReminderCellDelegate {
     }
 }
 
-extension ReminderListViewController: UICollectionViewDelegate{
-}
+//extension ReminderListViewController: UICollectionViewDelegate{
+//}
 
 
 
