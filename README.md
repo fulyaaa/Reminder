@@ -1,7 +1,5 @@
 # Reminder
 
-# Reminder
-
 Basit ve fonksiyonel bir görev/hatırlatıcı (reminder) uygulaması. Kullanıcılar görev ekleyebilir, tamamladıkları görevleri işaretleyebilir ve tüm verileri cihazda saklanır.
 
 ## 🛠 Kullanılan Teknolojiler
