@@ -9,9 +9,9 @@ Basit ve fonksiyonel bir görev/hatırlatıcı (reminder) uygulaması. Kullanıc
 - **Swift**
 - **UIKit**
 - **Storyboard** (Auto Layout ile)
-- **MVVM** mimarisi
-- **UserDefaults** (veri kalıcılığı için)
-- **UICollectionView** (liste gösterimi için)
+- **MVVM** 
+- **UserDefaults** 
+- **UICollectionView** 
 
 ## 🎥 Ekran Kaydı
 
