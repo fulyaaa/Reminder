@@ -1,3 +1,5 @@
+
+
 # Reminder
 
 Basit ve fonksiyonel bir görev/hatırlatıcı (reminder) uygulaması. Kullanıcılar görev ekleyebilir, tamamladıkları görevleri işaretleyebilir ve tüm verileri cihazda saklanır.
@@ -13,9 +15,7 @@ Basit ve fonksiyonel bir görev/hatırlatıcı (reminder) uygulaması. Kullanıc
 
 ## 🎥 Ekran Kaydı
 
-> Buraya ekran kaydını GIF veya video olarak ekleyebilirsin.
->
-> Örnek: `![Demo](demo.gif)`
+<img width="350" height="761" alt="demo" src="https://github.com/user-attachments/assets/5f2c2e6f-626a-4811-a77a-92aa54f59027" />
 
 ## ✨ Özellikler
 
